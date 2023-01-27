@@ -7,13 +7,14 @@
 - [ ] - Obrana projekta
 
 # Opis projekta
-## Kratki opis
-Ovdje ide opis projekta
+Aplikacija predstavlja bazu tekstova pjesama. Ideja jest da korisnik unese željenog izvođača, nakon čega se otvara lista od top 10 najslušanijih pjesama tog izvođača. Korisniku se, klikom na neku od pjesama, otvara prozor sa osnovnim informacijma o pjesmi (izvođač, album, godina i sl.) te tekstom pjesme. Korisnik može označiti pjesmu te je postaviti za favorita - takve pjesme spremaju se u zasebnu listu, kojoj se može pristupiti sa početnog zaslona, kako bi korisniku bile lakše dostupne.
 
 ## Popis funkcionalnosti
-1. a
-2. b
-3. c
+1. a PRVI EKRAN: Početni ekran, sadrži unos izvođača i odgovarajuću tipku "Pretraži" koja vodi na drugi ekran te tipku "Favoriti" koja vodi na zaseban ekran.
+2. b DRUGI EKRAN: Sadrži listu pjesama odabranog izvođača. Klikom na neku od pjesama otvara se treći ekran. Mogućnost povratka na početni ili prethodni ekran.
+3. c TREĆI EKRAN: Sadrži informacije o pjesmi (izvođač, album, godina i sl.) te tekst pjesme. Na ekranu se nalazi i simbol srca kojim se pjesma može dodati/ukloniti iz favorita. Mogućnost povratka na početni ili prethodni ekran.
+4. d ČETVRTI EKRAN: Pristupa mu se sa prvog, početnog ekrana, a sadrži listu pjesama koje su prethodno označene kao favoriti. Postoji mogućnost uklanjanja odabrane pjesme iz favorita. Mogućnost povratka na početni ili prethodni ekran.
+
 
 
 ## UPUTE
