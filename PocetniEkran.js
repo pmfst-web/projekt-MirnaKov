@@ -7,6 +7,7 @@ import {
   Button,
   TouchableWithoutFeedback,
   Keyboard,
+  Image,
 } from 'react-native';
 import Kartica from '../components/Kartica';
 import UnosBroja from '../components/Unos';
@@ -45,22 +46,25 @@ const PocetniEkran = (props) => {
       onPress={() => {
         Keyboard.dismiss();
       }}>
+
+      
       <View style={stil.ekran}>
+
+      
+      <Image
+      style={stil.slika}
+      source={require('../assets/rhcp.jpg')}/>
+
+      
         
         <Kartica stil={stil.unos}>
-          <Text>Upiši ime izvođača:</Text>
+
           
-          <UnosBroja
-            blurOnSubmit
-            keyboardType="numeric"
-            maxLength={2}
-            style={stil.unosBroja}
-            value={unos}
-            onChangeText={unosBrojaProvjera}
-          />
+          
+       
           <View style={stil.tipke}>
-            <Button title="Pretraži" onPress={resetPoljeUnos} color="#baa0b2" />
-            <Button title= "Favoriti" onPress={prihvatiOdabir} color="#baa0b2" />
+            <Button title="Pretraži" onPress={resetPoljeUnos} color="red" />
+            <Button title= "Favoriti" onPress={prihvatiOdabir} color="red" />
           </View>
         </Kartica>
         {prikazBroja}      
@@ -74,7 +78,7 @@ const stil = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: 'center',
-    backgroundColor: '#50ab8b',
+    backgroundColor: 'beige',
   },
   unos: {
     width: 300,
@@ -86,11 +90,14 @@ const stil = StyleSheet.create({
     flexDirection: 'row',
     justifyContent:'space-between',
     width: '100%',
-    paddingHorizontal: 15,
-  },
-  unosBroja: {
-    width: 50,
-  },
+    paddingHorizontal: 15, },
+  
+  slika: {
+    width: '70%',
+    height: 230
+ } 
+
+  
 });
 
 export default PocetniEkran;
