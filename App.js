@@ -1,19 +1,101 @@
-import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
-import Naslov from './components/Naslov'
-import PocetniEkran from './screens/PocetniEkran'
+import React, { useState } from 'react';
+import { View, Text, Button, TouchableOpacity } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MaterialIcons } from '@expo/vector-icons';
+import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
 
-export default function App() {
+import PocetniEkran from './screens/PocetniEkran';
+import ListaPjesama from './screens/ListaPjesama';
+import InfoPjesme from './screens/InfoPjesme';
+import Favoriti from './screens/Favoriti';
+import Boje from './constants/Boje';
+const Stack = createNativeStackNavigator();
+
+import { PJESME } from './data/test-podaci';
+
+const ucitajFontove = () => {
+  return Font.loadAsync({
+    "Baloo": require('./assets/Baloo.ttf'),
+    "Corinthia": require('./assets/Corinthia-Regular.ttf'),
+    "Anton": require('./assets/Anton-Regular.ttf'),
+  })
+};
+
+
+function App() {
+
+  const [fontUcitan, ucitano] = useState(false);
+
+  if (!fontUcitan) {
+    return (
+      <AppLoading
+        startAsync={ucitajFontove}
+        onFinish={() => ucitano(true)}
+        onError={console.warn}
+      />
+    );
+  
+  }
   return (
-    <View style={styles.ekran}>
-      <Naslov naslov={"RED HOT CHILLI PEPPERS"}/>
-      <PocetniEkran />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: Boje.Naglasak1,
+          },
+          headerTintColor: Boje.Primarna,
+        }}>
+        <Stack.Screen
+          name="PocetniEkran"
+          component={PocetniEkran}
+          options={{
+            title: 'RED HOT CHILLI PEPPERS',
+          }}
+        />
+        <Stack.Screen
+          name="Popis"
+          component={ListaPjesama}
+          options={({ route, navigation }) => {
+            return {
+              headerRight: () => {
+                return (
+                  <TouchableOpacity onPress={() => navigation.navigate('Unos')}>
+                  </TouchableOpacity>
+                );
+              },
+            };
+          }}
+        />
+        <Stack.Screen
+          name="Detalji"
+          component={InfoPjesme}
+          options={({ route, navigation }) => {
+            const idPjesme = Number(route.params.id);
+            const pjesma = PJESME.find((r) => r.id === idPjesme);
+            return {
+              headerTitle: pjesma?.naslov,
+              headerRight: () => {
+                return (
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('PocetniEkran')}>
+                    <View>
+                      <MaterialIcons
+                        name="home"
+                        size={26}
+                        color={Boje.Primarna}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                );
+              },
+            };
+          }}
+        />
+        <Stack.Screen name="Favoriti" component={Favoriti} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  ekran: {
-    flex: 1
-  }
-});
+export default App;

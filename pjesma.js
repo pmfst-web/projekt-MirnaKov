@@ -1,8 +1,10 @@
 class Pjesma {
-  constructor(album, godina, tekst){
+  constructor(id, naziv, album, godina, tekst){
+    this.id=id;
+    this.naziv=naziv;
     this.album = album;
     this.godina = godina;
-    this.tekst = tekst
+    this.tekst = tekst;
   }
 }
 
