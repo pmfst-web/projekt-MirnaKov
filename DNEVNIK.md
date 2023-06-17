@@ -32,4 +32,13 @@ Dovšeni file-ovi sa podacima o pjesmama.
 Dovršen izgled još dva ekrana - ekran ListaPjesama.js i InfoPjesme.js).
 Napravljen prijelaz između ekrana - s prvoga na drugi, sa drugoga na treći te sa trećega na početni ekran.
 
+## 17.6.2023.
+Pocetak | Kraj
+------- | ----
+19:00   | 23:00
+### Kratki opis promjena
+Uređen novi, četvrti ekran za unos nove pjesme.
+Button element s prvog ekrana vodi na ekran za unos.
+Pokušaj kodiranja unosa pjesama na originalni popis - ne funkcionira.
+
 
