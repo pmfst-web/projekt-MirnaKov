@@ -9,7 +9,7 @@ import * as Font from 'expo-font';
 import PocetniEkran from './screens/PocetniEkran';
 import ListaPjesama from './screens/ListaPjesama';
 import InfoPjesme from './screens/InfoPjesme';
-import Favoriti from './screens/Favoriti';
+import Unos from './screens/Unos';
 import Boje from './constants/Boje';
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +27,7 @@ const ucitajFontove = () => {
 function App() {
 
   const [fontUcitan, ucitano] = useState(false);
+  const dodaj = (pjesma) => postaviPjesme(...svePjesme, pjesma)
 
   if (!fontUcitan) {
     return (
@@ -93,7 +94,24 @@ function App() {
             };
           }}
         />
-        <Stack.Screen name="Favoriti" component={Favoriti} />
+        <Stack.Screen 
+        name="Unos" 
+        component={Unos}
+        options={({ route, navigation }) => {
+            return {
+              headerRight: () => {
+                return (
+                  <TouchableOpacity onPress={() => navigation.navigate('PocetniEkran')} >
+                  
+                  </TouchableOpacity>
+                );
+              },
+            };
+          }}
+       
+        
+        
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
