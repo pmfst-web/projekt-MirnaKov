@@ -41,4 +41,13 @@ Uređen novi, četvrti ekran za unos nove pjesme.
 Button element s prvog ekrana vodi na ekran za unos.
 Pokušaj kodiranja unosa pjesama na originalni popis - ne funkcionira.
 
+## 18.6.2023.
+Pocetak | Kraj
+------- | ----
+20:00   | 00:00
+### Kratki opis promjena
+Promjene u kodu (App.js, Unos.js, ListaPjesama.js, PocetniEkran.js), unos i dalje ne funkcionira.
+
+
+
 
