@@ -27,7 +27,11 @@ const ucitajFontove = () => {
 function App() {
 
   const [fontUcitan, ucitano] = useState(false);
-  const dodaj = (pjesma) => postaviPjesme(...svePjesme, pjesma)
+  const [svePjesme, postaviPjesme] = useState(PJESME);
+  const dodaj = (pjesma) => {
+  postaviPjesme([...svePjesme, pjesma]);
+};
+  
 
   if (!fontUcitan) {
     return (
@@ -101,17 +105,19 @@ function App() {
             return {
               headerRight: () => {
                 return (
-                  <TouchableOpacity onPress={() => navigation.navigate('PocetniEkran')} >
+                  <TouchableOpacity onPress={() => navigation.navigate('PocetniEkran')}>
                   
                   </TouchableOpacity>
+                  
+                   
+                  
                 );
               },
+            
             };
-          }}
-       
-        
-        
-        />
+          }}   
+         
+        /> 
       </Stack.Navigator>
     </NavigationContainer>
   );
