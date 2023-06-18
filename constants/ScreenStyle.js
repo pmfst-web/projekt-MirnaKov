@@ -11,7 +11,7 @@ const screenStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#e8ddba',
-        marginRight: 20,
+        marginRight: 0,
     },
       lista: {
         alignItems: 'center',
