@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -10,8 +10,17 @@ import {
 import Boje from '../constants/Boje';
 import ListaElement from '../components/ListaElement';
 import { PJESME } from '../data/test-podaci';
+//import * as React from 'react';
 
 const ListaPjesama = ({ route, navigation }) => {
+  const [pjesme, setPjesme] = useState(PJESME);
+
+  const unos = (novaPjesma) => {
+    setPjesme([...pjesme, novaPjesma]);
+  };
+
+
+
   const prikazElelementa = (podaci) => {
     return (
       <ListaElement
@@ -26,7 +35,7 @@ const ListaPjesama = ({ route, navigation }) => {
         <FlatList
           showsVerticalScrollIndicator={false}
           style={{ margin: 5 }}
-          data={PJESME}
+          data={pjesme}
           renderItem={prikazElelementa}
           numColumns={1}
         />

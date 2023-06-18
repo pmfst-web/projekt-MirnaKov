@@ -8,48 +8,58 @@ import Boje from "../constants/Boje";
 import Pjesma from '../models/pjesma';
 import screenStyle from "../constants/ScreenStyle";
 
-const Unos = ({route,navigation}) => {
-    const [naziv, album, godina, tekst, onChangeText] = useState('');  
+const Unos = ({route,navigation, unos}) => {
+    const [naziv, setNaziv] = useState('');
+    const [album, setAlbum] = useState ('')
+    const [godina, setGodina] = useState ('') 
+    const [tekst, setTekst] = useState ('') 
   
-    const novaPjesma = (naziv,album,godina,tekst) => {
-        route.params.unos(new Pjesma(route.params.id,naziv,album,godina,tekst))
-        navigation.navigate('PocetniEkran');
+    const novaPjesma = () => {
+      const newPjesma=new Pjesma(route.params.id,naziv,album,godina,tekst )
+      
+
+      unos(newPjesma);
+
+      navigation.navigate('PocetniEkran')
+
     }
+    const handleButtonPress = () => {
+    if (naziv && album && godina && tekst) {
+      novaPjesma();
+    } else {
+      navigation.navigate('PocetniEkran');
+    }
+  };
    
     return (
-      <View style={screenStyle.ekran}>
-  
-        <Text style={screenStyle.inputLabel}>Naziv pjesme:</Text>
-        <TextInput
-          style={screenStyle.input}
-          onChangeText={(naziv) => onChangeText(naziv)}
-          value={this.naziv}
-        />
-        <Text style={screenStyle.inputLabel}>Album:</Text>
-        <TextInput
-          style={screenStyle.input}
-          onChangeText={(album) => onChangeText(album)}
-          value={this.album}
+    <View style={screenStyle.ekran}>
+      <Text style={screenStyle.inputLabel}>Naziv pjesme:</Text>
+      <TextInput
+        style={screenStyle.input}
+        onChangeText={setNaziv}
+        value={naziv}
+      />
+      <Text style={screenStyle.inputLabel}>Album:</Text>
+      <TextInput
+        style={screenStyle.input}
+        onChangeText={setAlbum}
+        value={album}
+      />
+      <Text style={screenStyle.inputLabel}>Godina:</Text>
+      <TextInput
+        style={screenStyle.input}
+        onChangeText={setGodina}
+        value={godina}
+      />
+      <Text style={screenStyle.inputLabel}>Tekst:</Text>
+      <TextInput
+        style={screenStyle.input}
+        onChangeText={setTekst}
+        value={tekst}
+      />
+      <Tipka title="Unos pjesme" onPress={handleButtonPress}></Tipka>
+    </View>
+  );
+};
 
-        />
-        <Text style={screenStyle.inputLabel}>Godina:</Text>
-        <TextInput
-          style={screenStyle.input}
-          onChangeText={(godina) => onChangeText(godina)}
-          value={godina}
-        />
-
-        <Text style={screenStyle.inputLabel}>Tekst:</Text>
-        <TextInput
-          style={screenStyle.input}
-          onChangeText={(tekst) => onChangeText(tekst)}
-          value={tekst}
-        />
-  
-        <Tipka title="Unos pjesme"
-            onPress={()=>novaPjesma(naziv,album,godina,tekst)}> Dodaj </Tipka>
-  
-      </View>
-    );
-  };
-  export default Unos;
+export default Unos;
